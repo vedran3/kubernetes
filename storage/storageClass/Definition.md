@@ -6,4 +6,4 @@ Each StorageClass contains the fields provisioner, parameters, and reclaimPolicy
 
 The name of a StorageClass object is significant, and is how users can request a particular class. Administrators set the name and other parameters of a class when first creating StorageClass objects, and the objects cannot be updated once they are created.
 
-Administrators can specify a default StorageClass only for PVCs that don't request any particular class to bind to.
+You can specify a default StorageClass only for PVCs that don't request any particular class to bind to.
