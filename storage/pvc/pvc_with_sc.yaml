@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  #volumeMode: Filesystem  ## This is optional
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: standard  ## This is where you select the name of the SC that you want this PVC to use. 
