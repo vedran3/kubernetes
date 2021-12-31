@@ -1,0 +1,9 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: <ns_name>
+  name: <role_name>
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods"]  # you can have any type of resource listed here
+  verbs: ["get", "watch", "list"] #permissions for the role 
