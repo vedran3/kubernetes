@@ -1,0 +1,1 @@
+There are many different secrets that you can pass using secret.yaml. All of the examples are listed in the k8s documentation: https://kubernetes.io/docs/concepts/configuration/secret/
