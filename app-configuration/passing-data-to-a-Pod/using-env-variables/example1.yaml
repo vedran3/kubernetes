@@ -6,7 +6,7 @@ spec:
   containers:
   - name: <my-container-name>
     image: <image>
-    command: ['sh', '-c', 'echo "configmap: $CONFIGMAPVAR secret: $SECRETVAR"']
+    command: ['sh', '-c', 'echo "configmap: $CONFIGMAPVAR secret: $SECRETVAR"']  # This command will just echo the CONFIGMAPVAR and SECRETVAR on the command line, it is a basic example.
     env:
     - name: <CONFIGMAPVARNAME>
       valueFrom:

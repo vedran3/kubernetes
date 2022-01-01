@@ -8,9 +8,9 @@ spec:
     image: <image>
     command: ['sh', '-c', 'while true; do sleep 3600; done']
     volumeMounts:
-    - name: configmap-volume  # using ConfigMap
+    - name: configmap-volume  # using ConfigMap. This is a similar example to adding a file like application.properties to a container, with contents inside of that file. Then at runtime, you can execute that file, to set the properties for the app
       mountPath: /etc/config/configmap
-    - name: secret-volume     # using Secret
+    - name: secret-volume     # using Secret. You can also use this to referance secrets from an external Key Vault and pass them to your containers at runtime
       mountPath: /etc/config/secret
   volumes:
   - name: configmap-volume
