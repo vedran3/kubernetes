@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: <my_configmap_name>
+data:
+  key1: value1  # standard key-value pair
+  key2: value2  # standard key-value pair
+  key3:
+    subkey: # this is a nested key-value pair
+      morekeys: data123
+      evenmorekeys: more data 
+  key4: |
+    You can also 
+    do multi-line
+    data.
