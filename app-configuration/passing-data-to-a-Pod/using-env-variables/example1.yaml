@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: <my-pod>
+spec:
+  containers:
+  - name: <my-container-name>
+    image: <image>
+    command: ['sh', '-c', 'echo "configmap: $CONFIGMAPVAR secret: $SECRETVAR"']
+    env:
+    - name: <CONFIGMAPVARNAME>
+      valueFrom:
+        configMapKeyRef:
+          name: <my-configmap>
+          key: <key1>
+    - name: <SECRETVARNAME>
+      valueFrom:
+        secretKeyRef:
+          name: <my-secret>
+          key: <secretkey1>

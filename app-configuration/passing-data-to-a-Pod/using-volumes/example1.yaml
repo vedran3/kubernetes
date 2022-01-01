@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: <my-pod>
+spec:
+  containers:
+  - name: <my-container-name>
+    image: <image>
+    command: ['sh', '-c', 'while true; do sleep 3600; done']
+    volumeMounts:
+    - name: configmap-volume  # using ConfigMap
+      mountPath: /etc/config/configmap
+    - name: secret-volume     # using Secret
+      mountPath: /etc/config/secret
+  volumes:
+  - name: configmap-volume
+    configMap:
+      name: <my-configmap>
+  - name: secret-volume
+    secret:
+      secretName: <my-secret>
