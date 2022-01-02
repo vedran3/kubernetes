@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: <my_pod>
+spec:
+  restartPolicy: Never
+  volumes:
+  - name: shared-data  # Create a Volume called shared-data
+    emptyDir: {}
+  containers:
+
+  - name: nginx-container
+    image: nginx
+    volumeMounts:
+    - name: shared-data  # Mount the Volume
+      mountPath: /usr/share/nginx/html
+
+  - name: debian-container
+    image: debian
+    volumeMounts:
+    - name: shared-data  # Mount the Volume
+      mountPath: /pod-data
+    command: ["/bin/sh"]
+    args: ["-c", "echo Hello from the debian container > /pod-data/index.html"]
+
+
+# The first container listed in the configuration file runs an nginx server. The mount path for the shared Volume is /usr/share/nginx/html. The second container is based on the debian image, and has a mount path of /pod-data. The second container runs the following command and then terminates:
+# echo Hello from the debian container > /pod-data/index.html
+# The second container writes the index.html file in the root directory of the nginx server.
