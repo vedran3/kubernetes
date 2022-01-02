@@ -1,0 +1,13 @@
+# Creating an init-container within a Pod that delays the startup of the main container by 10 seconds. Once the init-container completes, the mani container can proceed with startup. 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: <my_pod>
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.19.1
+  initContainers: 
+  - name: delay
+    image: busybox
+    command: ['sleep', '10']  
