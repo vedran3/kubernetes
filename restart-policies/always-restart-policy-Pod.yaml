@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: <my_pod>
+spec:
+  restartPolicy: Always  # Since this is the Default Restart Policy (Always RP), it is not even necessary to put this in a pod.yaml file, but this is what the paramater would look like
+  containers:
+  - name: busybox
+    image: busybox
+    command: ['sh', '-c', 'sleep 10']
