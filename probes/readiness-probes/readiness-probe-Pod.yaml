@@ -1,0 +1,16 @@
+# Create a pod with a readiness probe:
+## When you run kubectl get pods, this readiness-probe is what determines when the Pod is in a "READY" status on the kubectl get pods output
+apiVersion: v1
+kind: Pod
+metadata:
+  name: readiness-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.19.1
+    readinessProbe:
+      httpGet:
+        path: /
+        port: 80
+      initialDelaySeconds: 5
+      periodSeconds: 5

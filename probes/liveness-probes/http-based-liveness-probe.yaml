@@ -1,0 +1,15 @@
+# Create a pod with an http-based liveness probe:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-pod-http
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.19.1
+    livenessProbe:
+      httpGet:  # This is an httpGet probe, which means it will make an http get request, to determine the status of the container 
+        path: /
+        port: 80
+      initialDelaySeconds: 5
+      periodSeconds: 5

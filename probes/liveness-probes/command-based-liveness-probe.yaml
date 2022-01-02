@@ -1,0 +1,15 @@
+# Create a pod with a command-based liveness probe:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-pod
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    command: ['sh', '-c', 'while true; do sleep 3600; done']
+    livenessProbe:
+      exec:
+        command: ["echo", "Hello, world!"] # Put in a command to run on the container. If the command succeeds, then the container will be considered healthy. 
+      initialDelaySeconds: 5  # Delay running the command 5 seconds after the container first starts up. 
+      periodSeconds: 5  # How frequently the liveness probe will execute. Ex: 5 seconds.
