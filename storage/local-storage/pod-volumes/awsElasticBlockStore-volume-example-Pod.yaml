@@ -1,6 +1,6 @@
 # An awsElasticBlockStore volume mounts an Amazon Web Services (AWS) EBS volume into your pod. Unlike emptyDir, which is erased when a pod is removed, 
-the contents of an EBS volume are persisted and the volume is unmounted. This means that an EBS volume can be pre-populated with data, and that data can be 
-shared between pods. Make sure the zone matches the zone your cluster is in. Check that the size and EBS volume type is suitable for your use.
+# the contents of an EBS volume are persisted and the volume is unmounted. This means that an EBS volume can be pre-populated with data, and that data can 
+# be shared between pods. Make sure the zone matches the zone your cluster is in. Check that the size and EBS volume type is suitable for your use.
 
 apiVersion: v1
 kind: Pod
