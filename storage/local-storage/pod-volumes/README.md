@@ -6,4 +6,4 @@ hostPath Volumes - store data in a specified directory on the k8s Node. So essen
 
 emptyDir Volumes - this type is a Temporary Volume. This directory only exists only for as long as the Pod exists on the Node. If the Pod is deleted, the emptyDir and all the data inside it is deleted as well. This volume type is very useful for sharing data between 2 containers in a Pod. (Basically, this volume type is good for Multiple Containers on a Pod)
 
-There are other Cloud Provider specific local volume types as well, like AWS EBS and Azure Data Disk... 
+There are other Cloud Provider specific local volume types as well, like AWS EBS and Azure Data Disk, etc. 
