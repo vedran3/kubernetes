@@ -1,0 +1,19 @@
+# Create a Pod that uses a hostPath Volume to store data for a single container on the Pod: 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: <my_pod>
+spec:
+  restartPolicy: Never
+  containers:
+  - name: busybox
+    image: busybox
+    command: ['sh', '-c', 'echo Hi! > /outputs/output.txt']
+    volumeMounts:
+    - name: <my_volume>
+      mountPath: /output
+  volumes:
+  - name: <my_volume>
+    hostPath:
+      # directory location on host (Node)
+      path: /var/data
