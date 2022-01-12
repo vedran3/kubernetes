@@ -1,0 +1,27 @@
+#Creating an initContainer that will check for “my-svc” Service to come up, before it starts up the Main Container within the Pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.19.1
+  initContainers:
+  - name: my-svc-check
+    image: busybox:1.27
+    command: ['sh', '-c', 'until nslookup my-svc; do echo waiting for my-svc; sleep 2; done']
+#
+# For example, here is the Service.yaml for "my-svc":
+
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: my-svc
+# spec:
+#   selector:
+#     app: my-svc
+#   ports:
+#     - protocol: TCP
+#       port: 80
+#       targetPort: 80

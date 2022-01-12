@@ -1,0 +1,25 @@
+#Creating a DS to clean up log data in a directory on a Node that is not needed. This data is not important and can always be purged.
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: cleanup-pod
+spec: 
+  selector:
+    matchLabels:
+      app: cleanup-pod
+  template:
+    metadata:
+      labels: 
+        app: cleanup-pod
+    spec:
+      containers:
+      - name: busybox
+        image: busybox:1.27
+        command: ['sh', '-c', 'while true; do rm -rf /data-temp/*; sleep 60; done'] # Log cleanup command
+        volumeMounts:
+        - name: my-volume-mount
+          mountPath: /data-temp
+      volumes:
+      - name: my-volume
+        hostPath:
+          path: /etc/volume/tmp
