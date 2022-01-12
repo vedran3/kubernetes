@@ -1,0 +1,23 @@
+# Create a Pod that uses an emptyDir Volume (shared volume) to store data for multiple containers on a Pod: 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: <my_pod>
+spec:
+  restartPolicy: Never
+  containers:
+  - name: busybox1
+    image: busybox
+    command: ['sh', '-c', 'while true; do echo Hi! > /outputs/output.txt; sleep 5; done']
+    volumeMounts:
+    - name: <my_volume>
+      mountPath: /output
+  - name: busybox2
+    image: busybox
+    command: ['sh', '-c', 'while true; do cat /input/output.txt; sleep 5; done']
+    volumeMounts:
+    - name: <my_volume>
+      mountPath: /input  
+  volumes:
+  - name: <my_volume>
+    emptyDir: {}
